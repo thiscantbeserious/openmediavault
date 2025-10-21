@@ -1,6 +1,6 @@
 # UI Architecture & Migration Plan
 
-Last updated: 2025-03-14 by Codex  
+Last updated: 2025-03-14  
 Status: Draft – actively evolving while we define the Vue/theming transition.
 
 ## 1. Current Frontend Architecture
