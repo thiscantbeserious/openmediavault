@@ -1,13 +1,39 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`NavigationSidebar > renders menu entries as a snapshot 1`] = `
-"<aside data-v-4c3eb68c="" class="navigation-sidebar" data-testid="navigation-sidebar">
-  <header data-v-4c3eb68c="" class="navigation-sidebar__header">Workbench</header>
-  <nav data-v-4c3eb68c="" class="navigation-sidebar__content">
-    <ul data-v-4c3eb68c="">
-      <li data-v-4c3eb68c="" class="navigation-sidebar__item"><a data-v-4c3eb68c="" href="/services">Services</a></li>
-      <li data-v-4c3eb68c="" class="navigation-sidebar__item"><a data-v-4c3eb68c="" href="/services/ssh">SSH</a></li>
-    </ul>
-  </nav>
-</aside>"
+"<div class="v-application v-theme--light v-layout v-layout--full-height v-locale--is-ltr">
+  <div class="v-application__wrap">
+    <div class="v-layout" style="z-index: 900; position: relative; overflow: hidden;">
+      <nav class="v-navigation-drawer v-navigation-drawer--left v-navigation-drawer--active v-theme--light v-navigation-drawer--mobile navigation-sidebar" style="left: 0px; z-index: 904; transform: translateX(0px); position: absolute; transition: none;" data-v-4c3eb68c="" data-testid="navigation-sidebar">
+        <!---->
+        <div class="v-navigation-drawer__prepend">
+          <header data-v-4c3eb68c="" class="navigation-sidebar__header">Workbench</header>
+        </div>
+        <div class="v-navigation-drawer__content">
+          <div data-v-4c3eb68c="" class="v-list v-theme--light bg-transparent v-list--density-comfortable v-list--one-line navigation-sidebar__content" tabindex="0" role="list"><a data-v-4c3eb68c="" href="/services" class="v-list-item v-list-item--link v-theme--light v-list-item--density-comfortable v-list-item--one-line rounded-0 v-list-item--variant-text" tabindex="-2" role="link"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span>
+              <!---->
+              <div class="v-list-item__content" data-no-activator="">
+                <div class="v-list-item-title">Services</div>
+                <!---->
+                <!---->
+              </div>
+              <!---->
+            </a><a data-v-4c3eb68c="" href="/services/ssh" class="v-list-item v-list-item--link v-theme--light v-list-item--density-comfortable v-list-item--one-line rounded-0 v-list-item--variant-text" tabindex="-2" role="link"><span class="v-list-item__overlay"></span><span class="v-list-item__underlay"></span>
+              <!---->
+              <div class="v-list-item__content" data-no-activator="">
+                <div class="v-list-item-title">SSH</div>
+                <!---->
+                <!---->
+              </div>
+              <!---->
+            </a></div>
+        </div>
+        <!---->
+      </nav>
+      <transition-stub name="fade-transition" appear="false" persisted="false" css="true">
+        <!---->
+      </transition-stub>
+    </div>
+  </div>
+</div>"
 `;

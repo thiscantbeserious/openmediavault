@@ -1,0 +1,84 @@
+{
+  "themes": [
+    {
+      "id": "omv-default",
+      "label": "Default",
+      "description": "OpenMediaVault default look & feel",
+      "tokens": {
+        "colors.palette.corporate.lighter": "#b9dff8",
+        "colors.palette.corporate.light": "#85c3ec",
+        "colors.palette.corporate.default": "#5dacdf",
+        "colors.palette.corporate.dark": "#3b95cf",
+        "colors.palette.corporate.darker": "#1b7bba",
+        "colors.palette.neutral.transparent": "transparent",
+        "colors.palette.neutral.black": "#000000",
+        "colors.palette.neutral.white": "#ffffff",
+        "colors.palette.neutral.whiteTranslucent": "hsla(0, 0%, 100%, 38%)",
+        "colors.palette.neutral.blackTranslucent": "hsla(0, 0%, 0%, 54%)",
+        "colors.palette.neutral.gray": "#656c72",
+        "colors.palette.neutral.whitesmoke": "#f5f5f5",
+        "colors.palette.status.success": "#4cd964",
+        "colors.palette.status.warning": "#f8d400",
+        "colors.palette.status.error": "#ff3b30",
+        "colors.palette.status.info": "#3b95cf",
+        "colors.surface.primary": "#0c1c2c",
+        "colors.surface.primaryMuted": "rgba(12, 28, 44, 0.65)",
+        "colors.surface.content": "#fcfcfc",
+        "colors.surface.background": "#fcfcfc",
+        "colors.surface.topbar": "#5dacdf",
+        "colors.surface.card": "#ffffff",
+        "colors.surface.hover": "rgba(0, 0, 0, 0.04)",
+        "colors.surface.selectedButton": "rgba(0, 0, 0, 0.08)",
+        "colors.text.primary": "#000000",
+        "colors.text.secondary": "rgba(0, 0, 0, 0.6)",
+        "colors.text.disabled": "rgba(0, 0, 0, 0.38)",
+        "colors.text.hint": "rgba(0, 0, 0, 0.38)",
+        "colors.accent.primary": "#5dacdf",
+        "colors.accent.secondary": "#f8d400",
+        "colors.accent.warn": "#ff3b30",
+        "typography.fontFamilyBase": "'Inter','Roboto','HelveticaNeue','Helvetica Neue',helvetica,arial,sans-serif",
+        "typography.fontFamilyMonospace": "'Roboto Mono',monospace",
+        "typography.fontSizeBase": "14px",
+        "typography.fontSizeButton": "14px",
+        "typography.fontSizeCaption": "12px",
+        "typography.fontSizeHeadline": "20px",
+        "typography.fontSizeSubheading2": "16px",
+        "typography.fontSizeTitle": "22px",
+        "typography.fontWeightBase": "400",
+        "typography.fontWeightHeadline": "600",
+        "typography.fontWeightSubheading2": "500",
+        "typography.fontWeightTitle": "500",
+        "layout.margin": "1.5rem",
+        "layout.marginIconText": "0.625rem",
+        "layout.padding": "1rem",
+        "layout.topBarHeight": "4rem",
+        "layout.navigationBarWidth": "18.75rem",
+        "layout.notificationBarWidth": "21.875rem",
+        "layout.borderRadius": "4px"
+      },
+      "derivedTokens": {
+        "colors.surfaceBorder": "color-mix(in srgb, var(--omv-colors-surface-primary) 85%, white)",
+        "colors.accentActive": "color-mix(in srgb, var(--omv-colors-accent-primary) 80%, black)",
+        "colors.textOnPrimary": "var(--omv-colors-neutral-white)",
+        "colors.textOnAccent": "#4d2e25"
+      },
+      "assets": {
+        "fonts": [
+          {
+            "family": "Inter",
+            "weight": 400,
+            "style": "normal",
+            "src": "/assets/themes/omv-default/fonts/inter-400.woff2"
+          },
+          {
+            "family": "Roboto Mono",
+            "weight": 400,
+            "style": "normal",
+            "src": "/assets/themes/omv-default/fonts/roboto-mono-400.woff2"
+          }
+        ]
+      }
+    }
+  ],
+  "defaultThemeId": "omv-default"
+}

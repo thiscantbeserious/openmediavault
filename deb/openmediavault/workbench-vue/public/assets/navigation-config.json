@@ -1,0 +1,59 @@
+[
+  {
+    "path": "dashboard",
+    "text": "Dashboard",
+    "url": "/",
+    "icon": "mdi-view-dashboard",
+    "position": 10
+  },
+  {
+    "path": "system",
+    "text": "System",
+    "url": "/system",
+    "icon": "mdi-cog-outline",
+    "position": 20
+  },
+  {
+    "path": "network",
+    "text": "Network",
+    "url": "/network",
+    "icon": "mdi-lan",
+    "position": 30
+  },
+  {
+    "path": "storage",
+    "text": "Storage",
+    "url": "/storage",
+    "icon": "mdi-harddisk",
+    "position": 40
+  },
+  {
+    "path": "services",
+    "text": "Services",
+    "url": "/services",
+    "icon": "mdi-cube-outline",
+    "position": 50,
+    "children": [
+      {
+        "path": "services.ssh",
+        "text": "SSH",
+        "url": "/services/ssh",
+        "icon": "mdi-ssh"
+      }
+    ]
+  },
+  {
+    "path": "users",
+    "text": "Users",
+    "url": "/users",
+    "icon": "mdi-account-group-outline",
+    "position": 60
+  },
+  {
+    "path": "diagnostics",
+    "text": "Diagnostics",
+    "url": "/diagnostics",
+    "icon": "mdi-stethoscope",
+    "position": 70
+  }
+]

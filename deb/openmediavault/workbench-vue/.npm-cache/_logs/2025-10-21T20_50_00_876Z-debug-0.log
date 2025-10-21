@@ -1,0 +1,408 @@
+0 verbose cli /opt/homebrew/Cellar/node/24.10.0/bin/node /opt/homebrew/bin/npm
+1 info using npm@11.6.0
+2 info using node@v24.10.0
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/.npmrc
+5 silly config load:file:/Users/simon.sanladerer/.npmrc
+6 silly config load:file:/opt/homebrew/etc/npmrc
+7 verbose title npm install
+8 verbose argv "install" "--no-fund" "--no-audit"
+9 verbose logfile logs-max:10 dir:/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/.npm-cache/_logs/2025-10-21T20_50_00_876Z-
+10 verbose logfile /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/.npm-cache/_logs/2025-10-21T20_50_00_876Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly idealTree buildDeps
+14 silly fetch manifest vuetify@^3.7.1
+15 silly packumentCache full:https://registry.npmjs.org/vuetify cache-miss
+16 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+17 http fetch GET 200 https://registry.npmjs.org/vuetify 383ms (cache miss)
+18 silly packumentCache full:https://registry.npmjs.org/vuetify set size:undefined disposed:false
+19 silly fetch manifest typescript@^5.4.5
+20 silly packumentCache full:https://registry.npmjs.org/typescript cache-miss
+21 http fetch GET 200 https://registry.npmjs.org/npm 790ms
+22 http fetch GET 200 https://registry.npmjs.org/typescript 674ms (cache miss)
+23 silly packumentCache full:https://registry.npmjs.org/typescript set size:undefined disposed:false
+24 silly fetch manifest vite-plugin-vuetify@^2.0.4
+25 silly packumentCache full:https://registry.npmjs.org/vite-plugin-vuetify cache-miss
+26 http fetch GET 200 https://registry.npmjs.org/vite-plugin-vuetify 330ms (cache miss)
+27 silly packumentCache full:https://registry.npmjs.org/vite-plugin-vuetify set size:undefined disposed:false
+28 silly fetch manifest vite@^5.2.10
+29 silly packumentCache full:https://registry.npmjs.org/vite cache-miss
+30 http fetch GET 200 https://registry.npmjs.org/vite 1066ms (cache miss)
+31 silly packumentCache full:https://registry.npmjs.org/vite set size:undefined disposed:false
+32 silly fetch manifest @types/node@^20.12.12
+33 silly packumentCache full:https://registry.npmjs.org/@types%2fnode cache-miss
+34 http fetch GET 200 https://registry.npmjs.org/@types%2fnode 1413ms (cache miss)
+35 silly packumentCache full:https://registry.npmjs.org/@types%2fnode set size:undefined disposed:false
+36 silly fetch manifest less@*
+37 silly packumentCache full:https://registry.npmjs.org/less cache-miss
+38 http fetch GET 200 https://registry.npmjs.org/less 1483ms (cache miss)
+39 silly packumentCache full:https://registry.npmjs.org/less set size:undefined disposed:false
+40 silly fetch manifest lightningcss@^1.21.0
+41 silly packumentCache full:https://registry.npmjs.org/lightningcss cache-miss
+42 http fetch GET 200 https://registry.npmjs.org/lightningcss 223ms (cache miss)
+43 silly packumentCache full:https://registry.npmjs.org/lightningcss set size:undefined disposed:false
+44 silly fetch manifest sass@*
+45 silly packumentCache full:https://registry.npmjs.org/sass cache-miss
+46 http fetch GET 200 https://registry.npmjs.org/sass 1649ms (cache miss)
+47 silly packumentCache full:https://registry.npmjs.org/sass set size:undefined disposed:false
+48 silly fetch manifest sass-embedded@*
+49 silly packumentCache full:https://registry.npmjs.org/sass-embedded cache-miss
+50 http fetch GET 200 https://registry.npmjs.org/sass-embedded 267ms (cache miss)
+51 silly packumentCache full:https://registry.npmjs.org/sass-embedded set size:undefined disposed:false
+52 silly fetch manifest stylus@*
+53 silly packumentCache full:https://registry.npmjs.org/stylus cache-miss
+54 http fetch GET 200 https://registry.npmjs.org/stylus 410ms (cache miss)
+55 silly packumentCache full:https://registry.npmjs.org/stylus set size:undefined disposed:false
+56 silly fetch manifest sugarss@*
+57 silly packumentCache full:https://registry.npmjs.org/sugarss cache-miss
+58 http fetch GET 200 https://registry.npmjs.org/sugarss 178ms (cache miss)
+59 silly packumentCache full:https://registry.npmjs.org/sugarss set size:undefined disposed:false
+60 silly fetch manifest postcss@^8.3.3
+61 silly packumentCache full:https://registry.npmjs.org/postcss cache-miss
+62 http fetch GET 200 https://registry.npmjs.org/postcss 813ms (cache miss)
+63 silly packumentCache full:https://registry.npmjs.org/postcss set size:undefined disposed:false
+64 silly fetch manifest terser@^5.4.0
+65 silly packumentCache full:https://registry.npmjs.org/terser cache-miss
+66 http fetch GET 200 https://registry.npmjs.org/terser 385ms (cache miss)
+67 silly packumentCache full:https://registry.npmjs.org/terser set size:undefined disposed:false
+68 silly fetch manifest vue@^3.5.22
+69 silly packumentCache full:https://registry.npmjs.org/vue cache-miss
+70 http fetch GET 200 https://registry.npmjs.org/vue 627ms (cache miss)
+71 silly packumentCache full:https://registry.npmjs.org/vue set size:undefined disposed:false
+72 silly fetch manifest webpack-plugin-vuetify@>=3.1.0
+73 silly packumentCache full:https://registry.npmjs.org/webpack-plugin-vuetify cache-miss
+74 http fetch GET 200 https://registry.npmjs.org/webpack-plugin-vuetify 120ms (cache miss)
+75 silly packumentCache full:https://registry.npmjs.org/webpack-plugin-vuetify set size:undefined disposed:false
+76 silly fetch manifest @vue/compiler-sfc@^3.2.6
+77 silly packumentCache full:https://registry.npmjs.org/@vue%2fcompiler-sfc cache-miss
+78 http fetch GET 200 https://registry.npmjs.org/@vue%2fcompiler-sfc 184ms (cache miss)
+79 silly packumentCache full:https://registry.npmjs.org/@vue%2fcompiler-sfc set size:undefined disposed:false
+80 silly fetch manifest webpack@^5.0.0
+81 silly packumentCache full:https://registry.npmjs.org/webpack cache-miss
+82 http fetch GET 200 https://registry.npmjs.org/webpack 581ms (cache miss)
+83 silly packumentCache full:https://registry.npmjs.org/webpack set size:undefined disposed:false
+84 silly fetch manifest webfontloader@^1.6.28
+85 silly packumentCache full:https://registry.npmjs.org/webfontloader cache-miss
+86 http fetch GET 200 https://registry.npmjs.org/webfontloader 101ms (cache miss)
+87 silly packumentCache full:https://registry.npmjs.org/webfontloader set size:undefined disposed:false
+88 silly placeDep ROOT vite-plugin-vuetify@2.1.2 OK for: openmediavault-workbench-vue@0.1.0 want: ^2.0.4
+89 silly placeDep ROOT vuetify@3.10.6 OK for: vite-plugin-vuetify@2.1.2 want: ^3.0.0
+90 silly placeDep ROOT webfontloader@1.6.28 OK for: openmediavault-workbench-vue@0.1.0 want: ^1.6.28
+91 silly fetch manifest @vuetify/loader-shared@^2.1.1
+92 silly packumentCache full:https://registry.npmjs.org/@vuetify%2floader-shared cache-miss
+93 silly fetch manifest upath@^2.0.1
+94 silly packumentCache full:https://registry.npmjs.org/upath cache-miss
+95 http fetch GET 200 https://registry.npmjs.org/upath 101ms (cache miss)
+96 silly packumentCache full:https://registry.npmjs.org/upath set size:undefined disposed:false
+97 http fetch GET 200 https://registry.npmjs.org/@vuetify%2floader-shared 232ms (cache miss)
+98 silly packumentCache full:https://registry.npmjs.org/@vuetify%2floader-shared set size:undefined disposed:false
+99 silly fetch manifest vue@^3.0.0
+100 silly packumentCache full:https://registry.npmjs.org/vue cache-miss
+101 http cache https://registry.npmjs.org/vue 8ms (cache hit)
+102 silly packumentCache full:https://registry.npmjs.org/vue set size:1938500 disposed:false
+103 silly fetch manifest typescript@*
+104 silly packumentCache full:https://registry.npmjs.org/typescript cache-miss
+105 http cache https://registry.npmjs.org/typescript 28ms (cache hit)
+106 silly packumentCache full:https://registry.npmjs.org/typescript set size:14806606 disposed:false
+107 silly fetch manifest vuetify@^3.0.0
+108 silly packumentCache full:https://registry.npmjs.org/vuetify cache-miss
+109 http cache https://registry.npmjs.org/vuetify 12ms (cache hit)
+110 silly packumentCache full:https://registry.npmjs.org/vuetify set size:3552341 disposed:false
+111 silly fetch manifest vite-plugin-vuetify@>=2.1.0
+112 silly packumentCache full:https://registry.npmjs.org/vite-plugin-vuetify cache-miss
+113 http cache https://registry.npmjs.org/vite-plugin-vuetify 3ms (cache hit)
+114 silly packumentCache full:https://registry.npmjs.org/vite-plugin-vuetify set size:49491 disposed:false
+115 silly fetch manifest vite@>=5
+116 silly packumentCache full:https://registry.npmjs.org/vite cache-miss
+117 http cache https://registry.npmjs.org/vite 39ms (cache hit)
+118 silly packumentCache full:https://registry.npmjs.org/vite set size:38574624 disposed:false
+119 silly fetch manifest @types/node@^20.19.0 || >=22.12.0
+120 silly packumentCache full:https://registry.npmjs.org/@types%2fnode cache-miss
+121 http cache https://registry.npmjs.org/@types%2fnode 13ms (cache hit)
+122 silly packumentCache full:https://registry.npmjs.org/@types%2fnode set size:10665074 disposed:false
+123 silly fetch manifest jiti@>=1.21.0
+124 silly packumentCache full:https://registry.npmjs.org/jiti cache-miss
+125 http fetch GET 200 https://registry.npmjs.org/jiti 136ms (cache miss)
+126 silly packumentCache full:https://registry.npmjs.org/jiti set size:undefined disposed:false
+127 silly fetch manifest less@^4.0.0
+128 silly packumentCache full:https://registry.npmjs.org/less cache-miss
+129 http cache https://registry.npmjs.org/less 4ms (cache hit)
+130 silly packumentCache full:https://registry.npmjs.org/less set size:425893 disposed:false
+131 silly fetch manifest sass@^1.70.0
+132 silly packumentCache full:https://registry.npmjs.org/sass cache-miss
+133 http cache https://registry.npmjs.org/sass 3ms (cache hit)
+134 silly packumentCache full:https://registry.npmjs.org/sass set size:697197 disposed:false
+135 silly fetch manifest sass-embedded@^1.70.0
+136 silly packumentCache full:https://registry.npmjs.org/sass-embedded cache-miss
+137 http cache https://registry.npmjs.org/sass-embedded 4ms (cache hit)
+138 silly packumentCache full:https://registry.npmjs.org/sass-embedded set size:379146 disposed:false
+139 silly fetch manifest stylus@>=0.54.8
+140 silly packumentCache full:https://registry.npmjs.org/stylus cache-miss
+141 http cache https://registry.npmjs.org/stylus 3ms (cache hit)
+142 silly packumentCache full:https://registry.npmjs.org/stylus set size:286766 disposed:false
+143 silly fetch manifest sugarss@^5.0.0
+144 silly packumentCache full:https://registry.npmjs.org/sugarss cache-miss
+145 http cache https://registry.npmjs.org/sugarss 3ms (cache hit)
+146 silly packumentCache full:https://registry.npmjs.org/sugarss set size:44975 disposed:false
+147 silly fetch manifest terser@^5.16.0
+148 silly packumentCache full:https://registry.npmjs.org/terser cache-miss
+149 http cache https://registry.npmjs.org/terser 3ms (cache hit)
+150 silly packumentCache full:https://registry.npmjs.org/terser set size:776798 disposed:false
+151 silly fetch manifest tsx@^4.8.1
+152 silly packumentCache full:https://registry.npmjs.org/tsx cache-miss
+153 http fetch GET 200 https://registry.npmjs.org/tsx 134ms (cache miss)
+154 silly packumentCache full:https://registry.npmjs.org/tsx set size:undefined disposed:false
+155 silly fetch manifest yaml@^2.4.2
+156 silly packumentCache full:https://registry.npmjs.org/yaml cache-miss
+157 http fetch GET 200 https://registry.npmjs.org/yaml 119ms (cache miss)
+158 silly packumentCache full:https://registry.npmjs.org/yaml set size:undefined disposed:false
+159 silly placeDep ROOT @vuetify/loader-shared@2.1.1 OK for: vite-plugin-vuetify@2.1.2 want: ^2.1.1
+160 silly placeDep ROOT upath@2.0.1 OK for: vite-plugin-vuetify@2.1.2 want: ^2.0.1
+161 silly reify moves {}
+162 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-win32-x64-msvc
+163 silly reify mark deleted [
+163 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-win32-x64-msvc'
+163 silly reify ]
+164 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-win32-x64-gnu
+165 silly reify mark deleted [
+165 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-win32-x64-gnu'
+165 silly reify ]
+166 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-win32-ia32-msvc
+167 silly reify mark deleted [
+167 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-win32-ia32-msvc'
+167 silly reify ]
+168 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-win32-arm64-msvc
+169 silly reify mark deleted [
+169 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-win32-arm64-msvc'
+169 silly reify ]
+170 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-openharmony-arm64
+171 silly reify mark deleted [
+171 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-openharmony-arm64'
+171 silly reify ]
+172 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-x64-musl
+173 silly reify mark deleted [
+173 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-x64-musl'
+173 silly reify ]
+174 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-x64-gnu
+175 silly reify mark deleted [
+175 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-x64-gnu'
+175 silly reify ]
+176 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-s390x-gnu
+177 silly reify mark deleted [
+177 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-s390x-gnu'
+177 silly reify ]
+178 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-riscv64-musl
+179 silly reify mark deleted [
+179 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-riscv64-musl'
+179 silly reify ]
+180 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-riscv64-gnu
+181 silly reify mark deleted [
+181 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-riscv64-gnu'
+181 silly reify ]
+182 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-ppc64-gnu
+183 silly reify mark deleted [
+183 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-ppc64-gnu'
+183 silly reify ]
+184 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-loong64-gnu
+185 silly reify mark deleted [
+185 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-loong64-gnu'
+185 silly reify ]
+186 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-arm64-musl
+187 silly reify mark deleted [
+187 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-arm64-musl'
+187 silly reify ]
+188 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-arm64-gnu
+189 silly reify mark deleted [
+189 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-arm64-gnu'
+189 silly reify ]
+190 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-arm-musleabihf
+191 silly reify mark deleted [
+191 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-arm-musleabihf'
+191 silly reify ]
+192 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-arm-gnueabihf
+193 silly reify mark deleted [
+193 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-linux-arm-gnueabihf'
+193 silly reify ]
+194 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-freebsd-x64
+195 silly reify mark deleted [
+195 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-freebsd-x64'
+195 silly reify ]
+196 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-freebsd-arm64
+197 silly reify mark deleted [
+197 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-freebsd-arm64'
+197 silly reify ]
+198 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-darwin-x64
+199 silly reify mark deleted [
+199 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-darwin-x64'
+199 silly reify ]
+200 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-android-arm64
+201 silly reify mark deleted [
+201 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-android-arm64'
+201 silly reify ]
+202 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-android-arm-eabi
+203 silly reify mark deleted [
+203 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/rollup/node_modules/@rollup/rollup-android-arm-eabi'
+203 silly reify ]
+204 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/win32-x64
+205 silly reify mark deleted [
+205 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/win32-x64'
+205 silly reify ]
+206 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/win32-ia32
+207 silly reify mark deleted [
+207 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/win32-ia32'
+207 silly reify ]
+208 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/win32-arm64
+209 silly reify mark deleted [
+209 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/win32-arm64'
+209 silly reify ]
+210 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/sunos-x64
+211 silly reify mark deleted [
+211 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/sunos-x64'
+211 silly reify ]
+212 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/openbsd-x64
+213 silly reify mark deleted [
+213 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/openbsd-x64'
+213 silly reify ]
+214 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/netbsd-x64
+215 silly reify mark deleted [
+215 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/netbsd-x64'
+215 silly reify ]
+216 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-x64
+217 silly reify mark deleted [
+217 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-x64'
+217 silly reify ]
+218 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-s390x
+219 silly reify mark deleted [
+219 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-s390x'
+219 silly reify ]
+220 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-riscv64
+221 silly reify mark deleted [
+221 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-riscv64'
+221 silly reify ]
+222 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-ppc64
+223 silly reify mark deleted [
+223 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-ppc64'
+223 silly reify ]
+224 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-mips64el
+225 silly reify mark deleted [
+225 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-mips64el'
+225 silly reify ]
+226 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-loong64
+227 silly reify mark deleted [
+227 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-loong64'
+227 silly reify ]
+228 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-ia32
+229 silly reify mark deleted [
+229 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-ia32'
+229 silly reify ]
+230 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-arm64
+231 silly reify mark deleted [
+231 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-arm64'
+231 silly reify ]
+232 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-arm
+233 silly reify mark deleted [
+233 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/linux-arm'
+233 silly reify ]
+234 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/freebsd-x64
+235 silly reify mark deleted [
+235 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/freebsd-x64'
+235 silly reify ]
+236 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/freebsd-arm64
+237 silly reify mark deleted [
+237 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/freebsd-arm64'
+237 silly reify ]
+238 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/darwin-x64
+239 silly reify mark deleted [
+239 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/darwin-x64'
+239 silly reify ]
+240 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/android-x64
+241 silly reify mark deleted [
+241 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/android-x64'
+241 silly reify ]
+242 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/android-arm64
+243 silly reify mark deleted [
+243 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/android-arm64'
+243 silly reify ]
+244 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/android-arm
+245 silly reify mark deleted [
+245 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/android-arm'
+245 silly reify ]
+246 verbose reify failed optional dependency /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/aix-ppc64
+247 silly reify mark deleted [
+247 silly reify   '/Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue/node_modules/esbuild/node_modules/@esbuild/aix-ppc64'
+247 silly reify ]
+248 http cache @vuetify/loader-shared@https://registry.npmjs.org/@vuetify/loader-shared/-/loader-shared-2.1.1.tgz 0ms (cache hit)
+249 http cache vuetify@https://registry.npmjs.org/vuetify/-/vuetify-3.10.6.tgz 0ms (cache hit)
+250 http cache upath@https://registry.npmjs.org/upath/-/upath-2.0.1.tgz 0ms (cache hit)
+251 http cache webfontloader@https://registry.npmjs.org/webfontloader/-/webfontloader-1.6.28.tgz 0ms (cache hit)
+252 http cache vite-plugin-vuetify@https://registry.npmjs.org/vite-plugin-vuetify/-/vite-plugin-vuetify-2.1.2.tgz 0ms (cache hit)
+253 silly tarball no local data for @vuetify/loader-shared@https://registry.npmjs.org/@vuetify/loader-shared/-/loader-shared-2.1.1.tgz. Extracting by manifest.
+254 silly tarball no local data for vuetify@https://registry.npmjs.org/vuetify/-/vuetify-3.10.6.tgz. Extracting by manifest.
+255 silly tarball no local data for upath@https://registry.npmjs.org/upath/-/upath-2.0.1.tgz. Extracting by manifest.
+256 silly tarball no local data for webfontloader@https://registry.npmjs.org/webfontloader/-/webfontloader-1.6.28.tgz. Extracting by manifest.
+257 silly tarball no local data for vite-plugin-vuetify@https://registry.npmjs.org/vite-plugin-vuetify/-/vite-plugin-vuetify-2.1.2.tgz. Extracting by manifest.
+258 http fetch GET 200 https://registry.npmjs.org/vite-plugin-vuetify/-/vite-plugin-vuetify-2.1.2.tgz 129ms (cache miss)
+259 http fetch GET 200 https://registry.npmjs.org/@vuetify/loader-shared/-/loader-shared-2.1.1.tgz 216ms (cache miss)
+260 http fetch GET 200 https://registry.npmjs.org/upath/-/upath-2.0.1.tgz 346ms (cache miss)
+261 http fetch GET 200 https://registry.npmjs.org/webfontloader/-/webfontloader-1.6.28.tgz 377ms (cache miss)
+262 http fetch GET 200 https://registry.npmjs.org/vuetify/-/vuetify-3.10.6.tgz 7286ms (cache miss)
+263 silly ADD node_modules/upath
+264 silly ADD node_modules/@vuetify/loader-shared
+265 silly ADD node_modules/webfontloader
+266 silly ADD node_modules/vuetify
+267 silly ADD node_modules/vite-plugin-vuetify
+268 silly ADD node_modules/rollup/node_modules/@rollup/rollup-win32-x64-msvc
+269 silly ADD node_modules/rollup/node_modules/@rollup/rollup-win32-x64-gnu
+270 silly ADD node_modules/rollup/node_modules/@rollup/rollup-win32-ia32-msvc
+271 silly ADD node_modules/rollup/node_modules/@rollup/rollup-win32-arm64-msvc
+272 silly ADD node_modules/rollup/node_modules/@rollup/rollup-openharmony-arm64
+273 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-x64-musl
+274 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-x64-gnu
+275 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-s390x-gnu
+276 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-riscv64-musl
+277 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-riscv64-gnu
+278 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-ppc64-gnu
+279 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-loong64-gnu
+280 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-arm64-musl
+281 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-arm64-gnu
+282 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-arm-musleabihf
+283 silly ADD node_modules/rollup/node_modules/@rollup/rollup-linux-arm-gnueabihf
+284 silly ADD node_modules/rollup/node_modules/@rollup/rollup-freebsd-x64
+285 silly ADD node_modules/rollup/node_modules/@rollup/rollup-freebsd-arm64
+286 silly ADD node_modules/rollup/node_modules/@rollup/rollup-darwin-x64
+287 silly ADD node_modules/rollup/node_modules/@rollup/rollup-android-arm64
+288 silly ADD node_modules/rollup/node_modules/@rollup/rollup-android-arm-eabi
+289 silly ADD node_modules/esbuild/node_modules/@esbuild/win32-x64
+290 silly ADD node_modules/esbuild/node_modules/@esbuild/win32-ia32
+291 silly ADD node_modules/esbuild/node_modules/@esbuild/win32-arm64
+292 silly ADD node_modules/esbuild/node_modules/@esbuild/sunos-x64
+293 silly ADD node_modules/esbuild/node_modules/@esbuild/openbsd-x64
+294 silly ADD node_modules/esbuild/node_modules/@esbuild/netbsd-x64
+295 silly ADD node_modules/esbuild/node_modules/@esbuild/linux-x64
+296 silly ADD node_modules/esbuild/node_modules/@esbuild/linux-s390x
+297 silly ADD node_modules/esbuild/node_modules/@esbuild/linux-riscv64
+298 silly ADD node_modules/esbuild/node_modules/@esbuild/linux-ppc64
+299 silly ADD node_modules/esbuild/node_modules/@esbuild/linux-mips64el
+300 silly ADD node_modules/esbuild/node_modules/@esbuild/linux-loong64
+301 silly ADD node_modules/esbuild/node_modules/@esbuild/linux-ia32
+302 silly ADD node_modules/esbuild/node_modules/@esbuild/linux-arm64
+303 silly ADD node_modules/esbuild/node_modules/@esbuild/linux-arm
+304 silly ADD node_modules/esbuild/node_modules/@esbuild/freebsd-x64
+305 silly ADD node_modules/esbuild/node_modules/@esbuild/freebsd-arm64
+306 silly ADD node_modules/esbuild/node_modules/@esbuild/darwin-x64
+307 silly ADD node_modules/esbuild/node_modules/@esbuild/android-x64
+308 silly ADD node_modules/esbuild/node_modules/@esbuild/android-arm64
+309 silly ADD node_modules/esbuild/node_modules/@esbuild/android-arm
+310 silly ADD node_modules/esbuild/node_modules/@esbuild/aix-ppc64
+311 verbose cwd /Users/simon.sanladerer/git/simon/openmediavault/deb/openmediavault/workbench-vue
+312 verbose os Darwin 24.6.0
+313 verbose node v24.10.0
+314 verbose npm  v11.6.0
+315 notice
+315 notice New patch version of npm available! 11.6.0 -> 11.6.2
+315 notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.2
+315 notice To update run: npm install -g npm@11.6.2
+315 notice  { force: true, Symbol(proc-log.meta): true }
+316 verbose exit 0
+317 info ok

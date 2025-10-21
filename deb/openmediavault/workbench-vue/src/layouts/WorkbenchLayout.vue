@@ -1,19 +1,34 @@
 <template>
-  <div class="workbench-layout">
-    <NavigationSidebar class="workbench-layout__sidebar" />
-    <section class="workbench-layout__content">
-      <slot />
-    </section>
-  </div>
+  <v-app>
+    <v-layout class="workbench-layout">
+      <TopBar class="workbench-layout__topbar">
+        <template #prepend>
+          <v-btn icon variant="text" @click="drawerOpen = !drawerOpen" aria-label="toggle navigation">
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
+        </template>
+      </TopBar>
+
+      <NavigationSidebar :model-value="drawerOpen" @update:model-value="drawerOpen = $event" />
+
+      <v-main>
+        <v-container fluid class="workbench-layout__content" style="max-width: 100%">
+          <slot />
+        </v-container>
+      </v-main>
+    </v-layout>
+  </v-app>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 
 import NavigationSidebar from '../components/NavigationSidebar.vue';
+import TopBar from '../components/TopBar.vue';
 import { useThemeStore } from '../stores/themeStore';
 
 const themeStore = useThemeStore();
+const drawerOpen = ref(true);
 
 onMounted(() => {
   themeStore.ensureLoaded().catch((error) => {
@@ -26,17 +41,16 @@ onMounted(() => {
 <style scoped>
 .workbench-layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  background: radial-gradient(circle at top left, rgba(30, 50, 80, 0.8), rgba(5, 10, 20, 0.95));
-}
-
-.workbench-layout__sidebar {
-  flex-shrink: 0;
+  background-color: var(--omv-colors-surface-background, #f5f5f5);
+  font-family: var(--omv-typography-fontFamilyBase, 'Inter', 'Roboto', 'HelveticaNeue', 'Helvetica Neue', helvetica, arial, sans-serif);
 }
 
 .workbench-layout__content {
   flex: 1;
-  padding: 2rem;
-  color: #e2e8f8;
+  padding: var(--omv-layout-margin, 1.5rem);
+  color: var(--omv-colors-text-primary, #000000);
+  background-color: var(--omv-colors-surface-content, #ffffff);
 }
 </style>

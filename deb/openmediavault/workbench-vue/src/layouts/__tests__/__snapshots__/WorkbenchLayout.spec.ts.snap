@@ -1,10 +1,60 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`WorkbenchLayout > renders the sidebar and slot content 1`] = `
-"<div data-v-c84f0368="" class="workbench-layout">
-  <aside data-v-c84f0368="" data-testid="sidebar" class="workbench-layout__sidebar">Sidebar</aside>
-  <section data-v-c84f0368="" class="workbench-layout__content">
-    <div data-testid="content">Main</div>
-  </section>
+"<div class="v-application v-theme--light v-layout v-layout--full-height v-locale--is-ltr">
+  <div class="v-application__wrap">
+    <div data-v-c84f0368="" class="v-application v-theme--light v-layout v-layout--full-height v-locale--is-ltr">
+      <div class="v-application__wrap">
+        <div data-v-c84f0368="" class="v-layout workbench-layout" style="z-index: 800; position: relative; overflow: hidden;">
+          <header data-v-0b37eb01="" data-v-c84f0368="" class="v-toolbar v-toolbar--density-comfortable v-theme--light v-locale--is-ltr v-app-bar topbar workbench-layout__topbar" style="top: 0px; z-index: 804; transform: translateY(0%); position: absolute; transition: none;" data-testid="topbar">
+            <!---->
+            <div class="v-toolbar__content" style="height: 56px;">
+              <!---->
+              <!---->
+              <div data-v-0b37eb01="" class="v-toolbar-title topbar__branding">
+                <div class="v-toolbar-title__placeholder">
+                  <!----><span data-v-0b37eb01="" class="topbar__logo">openmediavault</span>
+                </div>
+              </div>
+              <div data-v-0b37eb01="" class="v-spacer topbar__spacer"></div>
+              <div data-v-0b37eb01="" class="topbar__actions"><button data-v-0b37eb01="" type="button" class="v-btn v-btn--icon v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text" aria-label="notifications"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span>
+                  <!----><span class="v-btn__content" data-no-activator=""><span data-v-0b37eb01="">🔔</span></span>
+                  <!---->
+                  <!---->
+                </button><button data-v-0b37eb01="" type="button" class="v-btn v-btn--icon v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text" aria-label="help"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span>
+                  <!----><span class="v-btn__content" data-no-activator=""><span data-v-0b37eb01="">?</span></span>
+                  <!---->
+                  <!---->
+                </button><button data-v-0b37eb01="" type="button" class="v-btn v-btn--icon v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text" aria-label="user"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span>
+                  <!----><span class="v-btn__content" data-no-activator=""><span data-v-0b37eb01="">👤</span></span>
+                  <!---->
+                  <!---->
+                </button><button data-v-0b37eb01="" type="button" class="v-btn v-btn--icon v-theme--light v-btn--density-default v-btn--size-default v-btn--variant-text" aria-label="power"><span class="v-btn__overlay"></span><span class="v-btn__underlay"></span>
+                  <!----><span class="v-btn__content" data-no-activator=""><span data-v-0b37eb01="">⏻</span></span>
+                  <!---->
+                  <!---->
+                </button></div>
+              <!---->
+            </div>
+            <transition-stub name="expand-transition" appear="false" persisted="false" css="true">
+              <!---->
+            </transition-stub>
+          </header>
+          <main data-v-c84f0368="" class="v-main" style="--v-layout-left: 0px; --v-layout-right: 0px; --v-layout-top: 0px; --v-layout-bottom: 0px; transition: none;">
+            <div data-v-c84f0368="" class="v-container v-container--fluid v-locale--is-ltr pa-0">
+              <div data-v-c84f0368="" class="v-row v-row--no-gutters workbench-layout__body">
+                <div data-v-c84f0368="" class="v-col v-col-auto workbench-layout__sidebar">
+                  <aside data-v-c84f0368="" data-testid="sidebar">Sidebar</aside>
+                </div>
+                <div data-v-c84f0368="" class="v-col workbench-layout__content">
+                  <div data-testid="content">Main</div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>"
 `;

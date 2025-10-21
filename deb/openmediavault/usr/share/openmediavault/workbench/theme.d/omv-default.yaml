@@ -3,6 +3,7 @@ type: theme
 data:
   id: omv-default
   label: Default
+  description: "OpenMediaVault default look & feel"
   default: true
   tokens:
     colors:
@@ -29,10 +30,34 @@ data:
       surface:
         primary: "#0c1c2c"
         primaryMuted: "rgba(12, 28, 44, 0.65)"
-        content: "#e2e8f8"
+        content: "#ffffff"
+        background: "#f5f5f5"
+        topbar: "#5dacdf"
+        card: "#ffffff"
+        hover: "rgba(0, 0, 0, 0.04)"
+        selectedButton: "rgba(0, 0, 0, 0.08)"
+      text:
+        primary: "#000000"
+        secondary: "rgba(0, 0, 0, 0.6)"
+        disabled: "rgba(0, 0, 0, 0.38)"
+        hint: "rgba(0, 0, 0, 0.38)"
+      accent:
+        primary: "#5dacdf"
+        secondary: "#f8d400"
+        warn: "#ff3b30"
     typography:
       fontFamilyBase: "'Inter','Roboto','HelveticaNeue','Helvetica Neue',helvetica,arial,sans-serif"
       fontFamilyMonospace: "'Roboto Mono',monospace"
+      fontSizeBase: "14px"
+      fontSizeButton: "14px"
+      fontSizeCaption: "12px"
+      fontSizeHeadline: "20px"
+      fontSizeSubheading2: "16px"
+      fontSizeTitle: "22px"
+      fontWeightBase: 400
+      fontWeightHeadline: 600
+      fontWeightSubheading2: 500
+      fontWeightTitle: 500
     layout:
       margin: "1.5rem"
       marginIconText: "0.625rem"
@@ -40,9 +65,13 @@ data:
       topBarHeight: "4rem"
       navigationBarWidth: "18.75rem"
       notificationBarWidth: "21.875rem"
+      borderRadius: "4px"
   derivedTokens:
     colors:
-      surfaceBorder: "color-mix(in srgb, var(--omv-colors.surface.primary) 85%, white)"
+      surfaceBorder: "color-mix(in srgb, var(--omv-colors-surface-primary) 85%, white)"
+      accentActive: "color-mix(in srgb, var(--omv-colors-accent-primary) 80%, black)"
+      textOnPrimary: "var(--omv-colors-neutral-white)"
+      textOnAccent: "#4d2e25"
   assets:
     fonts:
       - family: "Inter"
