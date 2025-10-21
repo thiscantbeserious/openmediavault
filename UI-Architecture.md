@@ -57,4 +57,4 @@ We will scaffold a parallel Vue 3/Vite workspace (`deb/openmediavault/workbench-
 
 ---
 
-Document owner: Codex (GPT-5). Please update this file alongside any major UI architecture decisions.
+Document owner: Agent. Please update this file alongside any major UI architecture decisions.
