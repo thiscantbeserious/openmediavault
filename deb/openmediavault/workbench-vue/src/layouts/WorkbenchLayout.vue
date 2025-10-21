@@ -8,7 +8,19 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
 import NavigationSidebar from '../components/NavigationSidebar.vue';
+import { useThemeStore } from '../stores/themeStore';
+
+const themeStore = useThemeStore();
+
+onMounted(() => {
+  themeStore.ensureLoaded().catch((error) => {
+    // eslint-disable-next-line no-console
+    console.error('Failed to load themes', error);
+  });
+});
 </script>
 
 <style scoped>

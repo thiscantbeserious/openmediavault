@@ -7,6 +7,12 @@ vi.mock('../../components/NavigationSidebar.vue', () => ({
   }
 }));
 
+vi.mock('../../stores/themeStore', () => ({
+  useThemeStore: () => ({
+    ensureLoaded: vi.fn().mockResolvedValue(undefined)
+  })
+}));
+
 import WorkbenchLayout from '../WorkbenchLayout.vue';
 
 describe('WorkbenchLayout', () => {
