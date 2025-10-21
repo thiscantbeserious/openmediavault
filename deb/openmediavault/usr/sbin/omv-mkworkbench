@@ -26,6 +26,7 @@ import re
 import shutil
 import sys
 from typing import Any, Callable, Dict, List, Union
+from urllib.parse import urlparse
 
 import click
 import natsort
@@ -96,6 +97,22 @@ def write_json_file(file_path: str, data: Union[Dict, List], verbose: bool = Fal
                             file_path, verbose=verbose)
 
 
+def flatten_dict(data: Dict[str, Any], prefix: str = '') -> Dict[str, Any]:
+    result: Dict[str, Any] = {}
+    for key, value in data.items():
+        composed_key = f"{prefix}{key}" if prefix else key
+        if isinstance(value, dict):
+            result.update(flatten_dict(value, f"{composed_key}."))
+        else:
+            result[composed_key] = value
+    return result
+
+
+def is_url(path: str) -> bool:
+    parsed = urlparse(path)
+    return parsed.scheme in ('http', 'https')
+
+
 def load_components(skip_invalid: bool = True, verbose: bool = False) -> Dict:
     component_dir = openmediavault.getenv(
         'OMV_WORKBENCH_COMPONENT_CONFIG_DIR',
@@ -154,6 +171,8 @@ def load_components(skip_invalid: bool = True, verbose: bool = False) -> Dict:
 class Context:
     verbose: bool
     skip_invalid: bool
+    verbose_missing_assets: bool
+    verbose_missing_assets: bool = False
 
 
 pass_context = click.make_pass_decorator(Context, ensure=True)
@@ -162,10 +181,12 @@ pass_context = click.make_pass_decorator(Context, ensure=True)
 @click.group()
 @click.option('--verbose', is_flag=True, help='Shows verbose output.')
 @click.option('--skip-invalid', is_flag=True, help='Skip invalid files.')
+@click.option('--verbose-missing-assets', is_flag=True, help='Warn about missing theme assets.')
 @pass_context
-def cli(ctx, verbose, skip_invalid):
+def cli(ctx, verbose, skip_invalid, verbose_missing_assets):
     ctx.verbose = verbose
     ctx.skip_invalid = skip_invalid
+    ctx.verbose_missing_assets = verbose_missing_assets
 
 
 @cli.command(name='all', help='Build all configuration files.')
@@ -177,6 +198,7 @@ def all_():
     ctx.invoke(log)
     ctx.invoke(mkfs)
     ctx.invoke(i18n)
+    ctx.invoke(theme)
 
 
 @cli.command(name='dashboard', help='Build the dashboard widget configuration file.')
@@ -383,6 +405,220 @@ def i18n(ctx):
                 if entry.msgid and entry.msgstr and (entry.msgid not in translations):
                     translations[entry.msgid] = entry.msgstr
         write_json_file(lang_file_path, translations, ctx.verbose)
+
+
+@cli.command(name='theme', help='Build the theme registry file.')
+@pass_context
+def theme(ctx):
+    theme_dir = openmediavault.getenv(
+        'OMV_WORKBENCH_THEME_CONFIG_DIR',
+        '/usr/share/openmediavault/workbench/theme.d'
+    )
+    registry_file = openmediavault.getenv(
+        'OMV_WORKBENCH_THEME_REGISTRY_FILE',
+        '/var/www/openmediavault/assets/theme-registry.json'
+    )
+
+    theme_schema = openmediavault.datamodel.Schema({
+        'type': 'object',
+        'properties': {
+            'version': {'type': 'string', 'required': True},
+            'type': {'type': 'string', 'enum': ['theme'], 'required': True},
+            'data': {'type': 'object', 'properties': {
+                'id': {'type': 'string', 'required': True},
+                'label': {'type': 'string'},
+                'description': {'type': 'string'},
+                'inherits': {'type': 'string'},
+                'default': {'type': 'boolean'},
+                'tokens': {'type': 'object', 'properties': {}, 'required': True},
+                'derivedTokens': {'type': 'object', 'properties': {}},
+                'assets': {'type': 'object', 'properties': {
+                    'logo': {'type': 'string'},
+                    'favicon': {'type': 'string'},
+                    'iconSprite': {'type': 'string'},
+                    'iconFontCss': {'type': 'string'},
+                    'fonts': {'type': 'array', 'items': {
+                        'type': 'object',
+                        'properties': {
+                            'family': {'type': 'string', 'required': True},
+                            'weight': {'type': ['string', 'integer'], 'required': True},
+                            'style': {'type': 'string', 'required': True},
+                            'src': {'type': 'string', 'required': True}
+                        }
+                    }}
+                }},
+                'metadata': {'type': 'object', 'properties': {}},
+                'tags': {'type': 'array', 'items': {'type': 'string'}}
+            }, 'required': True}
+        }
+    })
+
+    default_theme_id: str | None = None
+
+    def validate(name: str, theme_config: Dict, themes: List[Dict]) -> None:
+        nonlocal default_theme_id
+        theme_id = theme_config['id']
+        if openmediavault.collectiontools.find(themes, lambda d: d['id'] == theme_id):
+            openmediavault.log.error(
+                "The theme %s defined in %s already exists.", theme_id, name)
+            sys.exit(1)
+        if theme_config.get('default') is True:
+            if default_theme_id and default_theme_id != theme_id:
+                openmediavault.log.error(
+                    "Multiple themes marked as default (%s, %s).",
+                    default_theme_id,
+                    theme_id
+                )
+                sys.exit(1)
+            default_theme_id = theme_id
+
+    if not os.path.isdir(theme_dir):
+        registry = {
+            'themes': [],
+            'defaultThemeId': None
+        }
+        write_json_file(registry_file, registry, ctx.verbose)
+        return
+
+    theme_configs = load_yaml_files(
+        theme_schema,
+        theme_dir,
+        ctx.skip_invalid,
+        ctx.verbose,
+        validate=validate
+    )
+
+    if not theme_configs:
+        registry = {
+            'themes': [],
+            'defaultThemeId': None
+        }
+        write_json_file(registry_file, registry, ctx.verbose)
+        return
+
+    theme_map = {theme['id']: theme for theme in theme_configs}
+
+    theme_source_dirs: Dict[str, str] = {}
+    for name in glob.iglob(os.path.join(theme_dir, '*.yaml')):
+        with open(name, 'r') as fd:
+            content = strip_gettext(yaml.safe_load(fd))
+        data = content.get('data', {})
+        theme_id = data.get('id')
+        if theme_id and theme_id in theme_map:
+            theme_source_dirs[theme_id] = os.path.dirname(name)
+
+    def check_assets(theme_id: str, theme_config: Dict) -> None:
+        assets = theme_config.get('assets', {})
+        source_dir = theme_source_dirs.get(theme_id, theme_dir)
+
+        def verify_path(value: str) -> None:
+            if not value:
+                return
+            if is_url(value):
+                return
+            if os.path.isabs(value):
+                if ctx.verbose_missing_assets and not os.path.exists(value):
+                    openmediavault.log.warning(
+                        'Theme asset "%s" referenced by "%s" not found.',
+                        value,
+                        theme_id,
+                        verbose=ctx.verbose_missing_assets
+                    )
+                return
+            candidate = os.path.join(source_dir, value)
+            if ctx.verbose_missing_assets and not os.path.exists(candidate):
+                openmediavault.log.warning(
+                    'Theme asset "%s" referenced by "%s" not found.',
+                    candidate,
+                    theme_id,
+                    verbose=ctx.verbose_missing_assets
+                )
+
+        verify_path(assets.get('logo'))
+        verify_path(assets.get('favicon'))
+        verify_path(assets.get('iconSprite'))
+        verify_path(assets.get('iconFontCss'))
+
+        for font in assets.get('fonts', []) or []:
+            verify_path(font.get('src'))
+
+    for theme_id, theme_config in theme_map.items():
+        check_assets(theme_id, theme_config)
+
+    def resolve_theme(theme_id: str, seen: List[str] | None = None) -> Dict:
+        if seen is None:
+            seen = []
+        if theme_id in seen:
+            openmediavault.log.error(
+                "Circular inheritance detected for theme '%s'.", theme_id)
+            sys.exit(1)
+        if theme_id not in theme_map:
+            openmediavault.log.error(
+                "Theme '%s' not found.", theme_id)
+            sys.exit(1)
+        theme_data = copy.deepcopy(theme_map[theme_id])
+        parent_id = theme_data.get('inherits')
+        if not parent_id:
+            theme_data.pop('inherits', None)
+            return theme_data
+        parent_data = resolve_theme(parent_id, seen + [theme_id])
+        merged = copy.deepcopy(parent_data)
+        openmediavault.collectiontools.merge(merged, copy.deepcopy(theme_data))
+        merged.pop('inherits', None)
+        return merged
+
+    resolved_themes = []
+    for theme_id in theme_map:
+        resolved_themes.append(resolve_theme(theme_id))
+
+    registry_themes = []
+    resolved_default_id = default_theme_id
+
+    for theme_data in sorted(
+        resolved_themes,
+        key=lambda item: (item.get('label', item['id']).lower(), item['id'])
+    ):
+        entry: Dict[str, Any] = {
+            'id': theme_data['id'],
+            'label': theme_data.get('label', theme_data['id'])
+        }
+
+        if theme_data.get('description'):
+            entry['description'] = theme_data['description']
+
+        if theme_data.get('tags'):
+            entry['tags'] = theme_data['tags']
+
+        tokens = theme_data.get('tokens', {})
+        if tokens:
+            entry['tokens'] = flatten_dict(tokens)
+
+        derived_tokens = theme_data.get('derivedTokens', {})
+        if derived_tokens:
+            entry['derivedTokens'] = flatten_dict(derived_tokens)
+
+        assets = theme_data.get('assets')
+        if assets:
+            entry['assets'] = assets
+
+        metadata = theme_data.get('metadata')
+        if metadata:
+            entry['metadata'] = metadata
+
+        if theme_data.get('default'):
+            resolved_default_id = theme_data['id']
+
+        registry_themes.append(entry)
+
+    if not resolved_default_id and registry_themes:
+        resolved_default_id = registry_themes[0]['id']
+
+    registry = {
+        'themes': registry_themes,
+        'defaultThemeId': resolved_default_id
+    }
+
+    write_json_file(registry_file, registry, ctx.verbose)
 
 
 @cli.command(name='mkfs', help='Build the mkfs configuration file.')

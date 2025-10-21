@@ -16,7 +16,7 @@ Reference doc for contributors working inside `deb/openmediavault/workbench-vue/
 - Snapshot harness in place for placeholder, navigation sidebar, and layout components.
 
 ## Immediate Tasks
-1. Define theme-engine contract (runtime API + manifest expectations) before implementation.
+1. Implement `useThemeEngine` composable that reads `theme-registry.json`, applies CSS variables, and injects theme assets.
 2. Prototype RPC client wrapper mirroring Angular `RpcService` to unblock data-driven components.
 3. Extend layout to include header/notification stubs and document interaction patterns.
 

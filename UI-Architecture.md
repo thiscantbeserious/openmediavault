@@ -46,7 +46,7 @@ We will scaffold a parallel Vue 3/Vite workspace (`deb/openmediavault/workbench-
 | Angular sunset strategy | Decide coexistence window, routing handover, removal plan | TBD | Pending | Coordinate with maintainers |
 
 ## 4. Immediate Next Actions
-1. Draft the `omv-mkworkbench` theme command specification (schema, validation, outputs).
+1. Implement Vue theme runtime (`useThemeEngine`) consuming the generated registry and applying CSS variables/assets.
 2. Prototype the notification RPC contract and persistence model for maintainer review.
 3. Design RPC client wrapper + shared services (theme loader bootstrap, navigation fetch reuse) for Vue workspace.
 
