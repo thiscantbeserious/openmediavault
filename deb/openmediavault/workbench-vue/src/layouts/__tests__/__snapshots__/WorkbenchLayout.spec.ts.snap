@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WorkbenchLayout > renders the sidebar and slot content 1`] = `
+"<div data-v-c84f0368="" class="workbench-layout">
+  <aside data-v-c84f0368="" data-testid="sidebar" class="workbench-layout__sidebar">Sidebar</aside>
+  <section data-v-c84f0368="" class="workbench-layout__content">
+    <div data-testid="content">Main</div>
+  </section>
+</div>"
+`;

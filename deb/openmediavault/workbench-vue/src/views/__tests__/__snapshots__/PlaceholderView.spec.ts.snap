@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PlaceholderView > matches the current placeholder layout snapshot 1`] = `
+"<section data-v-d8c04cd1="" class="placeholder">
+  <h1 data-v-d8c04cd1="">openmediavault · Vue Workbench</h1>
+  <p data-v-d8c04cd1=""> This is the staging workspace for the next-generation UI. </p>
+</section>"
+`;

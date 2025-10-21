@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NavigationSidebar > renders menu entries as a snapshot 1`] = `
+"<aside data-v-4c3eb68c="" class="navigation-sidebar" data-testid="navigation-sidebar">
+  <header data-v-4c3eb68c="" class="navigation-sidebar__header">Workbench</header>
+  <nav data-v-4c3eb68c="" class="navigation-sidebar__content">
+    <ul data-v-4c3eb68c="">
+      <li data-v-4c3eb68c="" class="navigation-sidebar__item"><a data-v-4c3eb68c="" href="/services">Services</a></li>
+      <li data-v-4c3eb68c="" class="navigation-sidebar__item"><a data-v-4c3eb68c="" href="/services/ssh">SSH</a></li>
+    </ul>
+  </nav>
+</aside>"
+`;
