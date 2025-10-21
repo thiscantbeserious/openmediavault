@@ -2,6 +2,8 @@
 
 openmediavault is the next generation network attached storage (NAS) solution based on Debian Linux. It contains services like SSH, (S)FTP, SMB/CIFS, rsync and many more. Thanks to the modular design of the framework it can be enhanced via plugins. openmediavault is primarily designed to be used in home environments or small home offices, but is not limited to those scenarios. It is a simple and easy to use out-of-the-box solution that will allow everyone to install and administrate a Network Attached Storage without deeper knowledge.
 
+<img src="draft.png" alt="openmediavault" width="100%">
+
 **Note: openmediavault (like other NAS solutions) expects to have full, exclusive control over OS configuration and cannot be used within a container. Also, no graphical desktop user interface can be installed in parallel.**
 
 ## Installation
