@@ -1,0 +1,55 @@
+version: "1.0"
+type: theme
+data:
+  id: omv-default
+  label: Default
+  default: true
+  tokens:
+    colors:
+      palette:
+        corporate:
+          lighter: "#b9dff8"
+          light: "#85c3ec"
+          default: "#5dacdf"
+          dark: "#3b95cf"
+          darker: "#1b7bba"
+        neutral:
+          transparent: "transparent"
+          black: "#000000"
+          white: "#ffffff"
+          whiteTranslucent: "hsla(0, 0%, 100%, 38%)"
+          blackTranslucent: "hsla(0, 0%, 0%, 54%)"
+          gray: "#656c72"
+          whitesmoke: "#f5f5f5"
+        status:
+          success: "#4cd964"
+          warning: "#f8d400"
+          error: "#ff3b30"
+          info: "#3b95cf"
+      surface:
+        primary: "#0c1c2c"
+        primaryMuted: "rgba(12, 28, 44, 0.65)"
+        content: "#e2e8f8"
+    typography:
+      fontFamilyBase: "'Inter','Roboto','HelveticaNeue','Helvetica Neue',helvetica,arial,sans-serif"
+      fontFamilyMonospace: "'Roboto Mono',monospace"
+    layout:
+      margin: "1.5rem"
+      marginIconText: "0.625rem"
+      padding: "1rem"
+      topBarHeight: "4rem"
+      navigationBarWidth: "18.75rem"
+      notificationBarWidth: "21.875rem"
+  derivedTokens:
+    colors:
+      surfaceBorder: "color-mix(in srgb, var(--omv-colors.surface.primary) 85%, white)"
+  assets:
+    fonts:
+      - family: "Inter"
+        weight: 400
+        style: "normal"
+        src: "/assets/themes/omv-default/fonts/inter-400.woff2"
+      - family: "Roboto Mono"
+        weight: 400
+        style: "normal"
+        src: "/assets/themes/omv-default/fonts/roboto-mono-400.woff2"
