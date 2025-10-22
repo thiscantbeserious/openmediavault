@@ -54,7 +54,7 @@
         "layout.topBarHeight": "4rem",
         "layout.navigationBarWidth": "18.75rem",
         "layout.notificationBarWidth": "21.875rem",
-        "layout.borderRadius": "4px"
+        "layout.borderRadius": "12px"
       },
       "derivedTokens": {
         "colors.surfaceBorder": "color-mix(in srgb, var(--omv-colors-surface-primary) 85%, white)",

@@ -25,7 +25,9 @@
   padding: 0 1rem;
   background-color: var(--omv-colors-surface-topbar, #5dacdf);
   color: var(--omv-colors-neutral-white, #ffffff);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 0px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.13)), 0px 2px 25px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.04)), 0px 1px 10px 0px var(--v-shadow-key-ambient-opacity, rgba(0, 0, 0, 0)) !important;
+  /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);*/
+
 }
 
 .topbar__branding {

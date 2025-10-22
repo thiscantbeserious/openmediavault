@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12" md="6" lg="4">
-        <v-card class="pa-4" title="CPU" subtitle="Usage (mock)">
+        <v-card class="pa-4" title="CPU">
           <div class="chart-placeholder" />
         </v-card>
       </v-col>
@@ -58,5 +58,13 @@
     rgba(0, 0, 0, 0.04) 10px,
     rgba(0, 0, 0, 0.04) 20px
   );
+}
+
+.v-card {
+  border-radius: var(--omv-layout-borderRadius, 12px);
+}
+
+.v-card--variant-elevated {
+  box-shadow: 0px 3px 42px -1px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.05)), 0px 1px 1px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)), 0px 4px 30px 0px var(--v-shadow-key-ambient-opacity, rgba(0, 0, 0, 0.12))
 }
 </style>
