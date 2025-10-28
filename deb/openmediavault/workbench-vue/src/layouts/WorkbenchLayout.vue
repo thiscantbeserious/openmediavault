@@ -7,6 +7,23 @@
             <v-icon>mdi-menu</v-icon>
           </v-btn>
         </template>
+        <template #breadcrumbs>
+          <v-breadcrumbs density="compact">
+            <template v-for="(crumb, idx) in breadcrumbTrail" :key="crumb.url || idx">
+              <v-breadcrumbs-item
+                v-if="idx < breadcrumbTrail.length - 1"
+                :to="crumb.url"
+                exact
+              >
+                {{ crumb.text }}
+              </v-breadcrumbs-item>
+              <v-breadcrumbs-item v-else :disabled="true">{{ crumb.text }}</v-breadcrumbs-item>
+              <v-breadcrumbs-divider v-if="idx < breadcrumbTrail.length - 1">
+                <v-icon size="14">mdi-chevron-right</v-icon>
+              </v-breadcrumbs-divider>
+            </template>
+          </v-breadcrumbs>
+        </template>
       </TopBar>
 
       <NavigationSidebar :model-value="drawerOpen" @update:model-value="drawerOpen = $event" />
@@ -21,20 +38,56 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { storeToRefs } from 'pinia';
 
 import NavigationSidebar from '../components/NavigationSidebar.vue';
 import TopBar from '../components/TopBar.vue';
 import { useThemeStore } from '../stores/themeStore';
+import { useNavigationStore } from '../stores/navigationStore';
+import type { NavigationMenuItem } from '../composables/useNavigationConfigs';
 
 const themeStore = useThemeStore();
 const drawerOpen = ref(true);
+const route = useRoute();
+
+const navigationStore = useNavigationStore();
+const { entries, status } = storeToRefs(navigationStore);
+
+const findBreadcrumbTrail = (items: NavigationMenuItem[], currentPath: string) => {
+  let best: Array<{ text: string; url: string }> = [];
+
+  const dfs = (item: NavigationMenuItem, trail: Array<{ text: string; url: string }>) => {
+    const selfUrl = item.url ?? '';
+    const nextTrail = [...trail, { text: item.text, url: selfUrl }];
+    const matches = selfUrl && (currentPath === selfUrl || currentPath.startsWith(selfUrl + '/'));
+    if (matches && nextTrail.length > best.length) best = nextTrail;
+    if (Array.isArray(item.children)) {
+      for (const child of item.children) dfs(child, nextTrail);
+    }
+  };
+
+  for (const it of items) dfs(it, []);
+  return best.length ? best : [{ text: 'Dashboard', url: '/dashboard' }];
+};
+
+const breadcrumbTrail = computed(() => {
+  const list = entries.value ?? [];
+  return findBreadcrumbTrail(list, route.path);
+});
 
 onMounted(() => {
   themeStore.ensureLoaded().catch((error) => {
     // eslint-disable-next-line no-console
     console.error('Failed to load themes', error);
   });
+  if (status.value === 'idle') {
+    navigationStore.fetch().catch((error) => {
+      // eslint-disable-next-line no-console
+      console.error('Failed to load navigation entries', error);
+    });
+  }
 });
 </script>
 
@@ -52,5 +105,6 @@ onMounted(() => {
   padding: var(--omv-layout-margin, 1.5rem);
   color: var(--omv-colors-text-primary, #000000);
   background-color: var(--omv-colors-surface-content, #ffffff);
+  border-top: 0; /* avoid visual seam with app bar */
 }
 </style>
