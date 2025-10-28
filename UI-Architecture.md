@@ -1,6 +1,6 @@
 # UI Architecture & Migration Plan
 
-Last updated: 2025-03-14 by Codex  
+Last updated: 2025-03-14  
 Status: Draft – actively evolving while we define the Vue/theming transition.
 
 ## 1. Current Frontend Architecture
@@ -57,4 +57,4 @@ We will scaffold a parallel Vue 3/Vite workspace (`deb/openmediavault/workbench-
 
 ---
 
-Document owner: Codex (GPT-5). Please update this file alongside any major UI architecture decisions.
+Document owner: Agent. Please update this file alongside any major UI architecture decisions.
