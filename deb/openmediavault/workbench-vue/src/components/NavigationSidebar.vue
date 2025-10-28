@@ -108,10 +108,28 @@ const fallbackEntries: NavigationMenuItem[] = [
 ];
 
 const displayEntries = computed(() => (entries.value && entries.value.length ? entries.value : fallbackEntries));
+
+const filterTree = (items: NavigationMenuItem[], q: string): NavigationMenuItem[] => {
+  const matches = (txt: string | undefined) => !!txt && txt.toLowerCase().includes(q);
+  const result: NavigationMenuItem[] = [];
+  for (const item of items) {
+    const childMatches = Array.isArray(item.children) ? filterTree(item.children, q) : [];
+    const selfMatch = matches(item.text);
+    if (selfMatch || childMatches.length > 0) {
+      result.push({
+        ...item,
+        // Only show matching children to keep search results concise
+        children: childMatches.length > 0 ? childMatches : undefined
+      });
+    }
+  }
+  return result;
+};
+
 const filteredEntries = computed(() => {
   const q = (searchQuery.value ?? '').toString().trim().toLowerCase();
   if (!q) return displayEntries.value;
-  return displayEntries.value.filter((e) => e.text.toLowerCase().includes(q));
+  return filterTree(displayEntries.value, q);
 });
 
 const onClearSearch = () => {
@@ -134,6 +152,26 @@ onMounted(() => {
 
 watch(() => route.path, () => {
   syncOpenGroups();
+});
+
+watch(searchQuery, () => {
+  const q = (searchQuery.value ?? '').toString().trim().toLowerCase();
+  if (!q) {
+    syncOpenGroups();
+    return;
+  }
+  // Open all groups that remain in filtered results
+  const open: Record<string, boolean> = {};
+  const markParents = (items: NavigationMenuItem[]) => {
+    for (const it of items) {
+      if (Array.isArray(it.children) && it.children.length > 0) {
+        open[it.path] = true;
+        markParents(it.children);
+      }
+    }
+  };
+  markParents(filteredEntries.value);
+  openGroups.value = open;
 });
 
 const openGroups = ref<Record<string, boolean>>({});
