@@ -53,6 +53,8 @@ export const useNavigationConfigs = (options: UseNavigationConfigsOptions = {}) 
     users: 'mdi-account-group-outline',
     user: 'mdi-account-outline',
     group: 'mdi-account-multiple-outline',
+    'mdi-users': 'mdi-account-outline',
+    'mdi-group': 'mdi-account-multiple-outline',
     email: 'mdi-email-outline',
     bell: 'mdi-bell-outline',
     clock: 'mdi-clock-outline',

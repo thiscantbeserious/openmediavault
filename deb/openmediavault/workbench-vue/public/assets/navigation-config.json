@@ -378,7 +378,7 @@
         "path": "usermgmt.users",
         "text": "Users",
         "url": "/usermgmt/users",
-        "icon": "mdi-user",
+        "icon": "mdi-users",
         "position": 20
       },
       {
