@@ -7,7 +7,11 @@ import type { ConfigRouteLoader } from './configRouter';
 const baseRoutes = [
   {
     path: '/',
-    name: 'home',
+    redirect: '/dashboard'
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
     component: PlaceholderView
   }
 ];

@@ -48,20 +48,22 @@
           <v-list-item
             v-for="child in entry.children"
             :key="child.url"
-            :to="child.url"
+            :to="child.url || '/'"
             link
             :title="child.text"
             :prepend-icon="child.icon"
+            :class="{ 'navigation-sidebar__item--active': isActive(child.url) }"
             active-class="navigation-sidebar__item--active"
             rounded="0"
           />
         </v-list-group>
         <v-list-item
           v-else
-          :to="entry.url"
+          :to="entry.url || '/'"
           link
           :title="entry.text"
           :prepend-icon="entry.icon || 'mdi-menu'"
+          :class="{ 'navigation-sidebar__item--active': isActive(entry.url) }"
           active-class="navigation-sidebar__item--active"
           rounded="0"
         />
@@ -161,6 +163,13 @@ const syncOpenGroups = () => {
     }
   }
   openGroups.value = state;
+};
+
+const isActive = (url?: string): boolean => {
+  if (!url) return false;
+  const current = route.path;
+  // Exact match or current starts with the url and next char is '/' to treat url as a section root
+  return current === url || current.startsWith(url + '/');
 };
 </script>
 
