@@ -73,6 +73,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { storeToRefs } from 'pinia';
 import type { NavigationMenuItem } from '../composables/useNavigationConfigs';
 
 import { useNavigationStore } from '../stores/navigationStore';
@@ -84,8 +85,7 @@ const navigationStore = useNavigationStore();
 const route = useRoute();
 const searchQuery = ref('');
 
-const entries = navigationStore.entries;
-const status = navigationStore.status;
+const { entries, status } = storeToRefs(navigationStore);
 
 const fallbackEntries: NavigationMenuItem[] = [
   { path: 'dashboard', text: 'Dashboard', url: '/', icon: 'mdi-view-dashboard' },
@@ -105,7 +105,7 @@ const fallbackEntries: NavigationMenuItem[] = [
   { path: 'diagnostics', text: 'Diagnostics', url: '/diagnostics', icon: 'mdi-stethoscope' }
 ];
 
-const displayEntries = computed(() => (entries && entries.length ? entries : fallbackEntries));
+const displayEntries = computed(() => (entries.value && entries.value.length ? entries.value : fallbackEntries));
 const filteredEntries = computed(() => {
   const q = (searchQuery.value ?? '').toString().trim().toLowerCase();
   if (!q) return displayEntries.value;
@@ -121,7 +121,7 @@ const hasChildren = (entry: NavigationMenuItem): entry is NavigationMenuItem & {
 };
 
 onMounted(() => {
-  if (status === 'idle') {
+  if (status.value === 'idle') {
     navigationStore.fetch().catch((error) => {
       // eslint-disable-next-line no-console
       console.error('Failed to load navigation entries', error);
@@ -130,12 +130,9 @@ onMounted(() => {
   syncOpenGroups();
 });
 
-watch(
-  () => route.path,
-  () => {
-    syncOpenGroups();
-  }
-);
+watch(() => route.path, () => {
+  syncOpenGroups();
+});
 
 const openGroups = ref<Record<string, boolean>>({});
 const openedGroups = computed({
@@ -258,5 +255,18 @@ const syncOpenGroups = () => {
 /* Indentation for child items */
 .navigation-sidebar__content :deep(.v-list-group__items .v-list-item) {
   padding-inline-start: calc(var(--omv-layout-padding, 1rem) + 16px);
+}
+
+/* Always show group chevrons and ensure theme-consistent color */
+.navigation-sidebar__content :deep(.v-list-group .v-list-item__append) {
+  margin-inline-start: auto;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+.navigation-sidebar__content :deep(.v-list-group .v-list-item__append .v-icon) {
+  color: rgba(var(--v-theme-on-surface), 0.8);
 }
 </style>

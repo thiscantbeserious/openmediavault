@@ -2,58 +2,517 @@
   {
     "path": "dashboard",
     "text": "Dashboard",
-    "url": "/",
-    "icon": "mdi-view-dashboard",
+    "url": "/dashboard",
+    "icon": "mdi-apps",
     "position": 10
   },
   {
     "path": "system",
     "text": "System",
     "url": "/system",
-    "icon": "mdi-cog-outline",
+    "icon": "mdi-laptop",
+    "children": [
+      {
+        "path": "system.workbench",
+        "text": "Workbench",
+        "url": "/system/workbench",
+        "icon": "mdi-tune",
+        "position": 10
+      },
+      {
+        "path": "system.datetime",
+        "text": "Date & Time",
+        "url": "/system/date-time",
+        "icon": "mdi-clock",
+        "position": 20
+      },
+      {
+        "path": "system.notification",
+        "text": "Notification",
+        "url": "/system/notification",
+        "icon": "mdi-email",
+        "children": [
+          {
+            "path": "system.notification.settings",
+            "text": "Settings",
+            "url": "/system/notification/settings",
+            "icon": "mdi-tune",
+            "position": 10
+          },
+          {
+            "path": "system.notification.events",
+            "text": "Events",
+            "url": "/system/notification/events",
+            "icon": "mdi-bell",
+            "position": 20
+          }
+        ],
+        "position": 30
+      },
+      {
+        "path": "system.powermgmt",
+        "text": "Power Management",
+        "url": "/system/powermgmt",
+        "icon": "mdi-battery-medium",
+        "children": [
+          {
+            "path": "system.powermgmt.settings",
+            "text": "Settings",
+            "url": "/system/powermgmt/settings",
+            "icon": "mdi-tune",
+            "position": 10
+          },
+          {
+            "path": "system.powermgmt.tasks",
+            "text": "Scheduled Tasks",
+            "url": "/system/powermgmt/tasks",
+            "icon": "mdi-calendar-clock",
+            "position": 20
+          }
+        ],
+        "position": 40
+      },
+      {
+        "path": "system.monitoring",
+        "text": "Monitoring",
+        "url": "/system/monitoring",
+        "icon": "mdi-heartPulse",
+        "position": 50
+      },
+      {
+        "path": "system.cron",
+        "text": "Scheduled Tasks",
+        "url": "/system/cron",
+        "icon": "mdi-calendar-clock",
+        "position": 60
+      },
+      {
+        "path": "system.certificate",
+        "text": "Certificates",
+        "url": "/system/certificate",
+        "icon": "mdi-certificate",
+        "children": [
+          {
+            "path": "system.certificate.ssh",
+            "text": "SSH",
+            "url": "/system/certificate/ssh",
+            "icon": "mdi-ssh",
+            "position": 10
+          },
+          {
+            "path": "system.certificate.ssl",
+            "text": "SSL",
+            "url": "/system/certificate/ssl",
+            "icon": "mdi-ssl",
+            "position": 20
+          }
+        ],
+        "position": 70
+      },
+      {
+        "path": "system.updatemgmt",
+        "text": "Update Management",
+        "url": "/system/updatemgmt",
+        "icon": "mdi-download",
+        "children": [
+          {
+            "path": "system.updatemgmt.updates",
+            "text": "Updates",
+            "url": "/system/updatemgmt/updates",
+            "icon": "mdi-download",
+            "position": 10
+          },
+          {
+            "path": "system.updatemgmt.settings",
+            "text": "Settings",
+            "url": "/system/updatemgmt/settings",
+            "icon": "mdi-tune",
+            "children": [
+              {
+                "path": "system.updatemgmt.settings.software",
+                "text": "Software",
+                "url": "/system/updatemgmt/settings/software",
+                "icon": "mdi-source-repository",
+                "position": 10
+              },
+              {
+                "path": "system.updatemgmt.settings.updates",
+                "text": "Updates",
+                "url": "/system/updatemgmt/settings/updates",
+                "icon": "mdi-update",
+                "position": 20
+              }
+            ],
+            "position": 20
+          }
+        ],
+        "position": 70
+      },
+      {
+        "path": "system.plugins",
+        "text": "Plugins",
+        "url": "/system/plugins",
+        "icon": "mdi-plugin",
+        "position": 80
+      }
+    ],
     "position": 20
   },
   {
     "path": "network",
     "text": "Network",
     "url": "/network",
-    "icon": "mdi-lan",
+    "icon": "mdi-network",
+    "children": [
+      {
+        "path": "network.general",
+        "text": "General",
+        "url": "/network/general",
+        "icon": "mdi-tune",
+        "position": 10
+      },
+      {
+        "path": "network.interfaces",
+        "text": "Interfaces",
+        "url": "/network/interfaces",
+        "icon": "mdi-expansion-card",
+        "position": 20
+      },
+      {
+        "path": "network.proxy",
+        "text": "Proxy",
+        "url": "/network/proxy",
+        "icon": "mdi-router-network",
+        "position": 30
+      },
+      {
+        "path": "network.firewall",
+        "text": "Firewall",
+        "url": "/network/firewall",
+        "icon": "mdi-shield-half-full",
+        "children": [
+          {
+            "path": "network.firewall.rules",
+            "text": "Rules",
+            "url": "/network/firewall/rules",
+            "icon": "mdi-format-list-numbered",
+            "position": 10
+          }
+        ],
+        "position": 40
+      }
+    ],
     "position": 30
   },
   {
     "path": "storage",
     "text": "Storage",
     "url": "/storage",
-    "icon": "mdi-harddisk",
+    "icon": "mdi-nas",
+    "children": [
+      {
+        "path": "storage.disks",
+        "text": "Disks",
+        "url": "/storage/disks",
+        "icon": "mdi-harddisk",
+        "position": 10
+      },
+      {
+        "path": "storage.smart",
+        "text": "S.M.A.R.T.",
+        "url": "/storage/smart",
+        "icon": "mdi-pulse",
+        "children": [
+          {
+            "path": "storage.smart.settings",
+            "text": "Settings",
+            "url": "/storage/smart/settings",
+            "icon": "mdi-tune",
+            "position": 10
+          },
+          {
+            "path": "storage.smart.devices",
+            "text": "Devices",
+            "url": "/storage/smart/devices",
+            "icon": "mdi-harddisk",
+            "position": 20
+          },
+          {
+            "path": "storage.smart.tasks",
+            "text": "Scheduled Tasks",
+            "url": "/storage/smart/tasks",
+            "icon": "mdi-calendar-clock",
+            "position": 30
+          }
+        ],
+        "position": 20
+      },
+      {
+        "path": "storage.filesystems",
+        "text": "File Systems",
+        "url": "/storage/filesystems",
+        "icon": "mdi-file-tree",
+        "position": 40
+      },
+      {
+        "path": "storage.shared-folders",
+        "text": "Shared Folders",
+        "url": "/storage/shared-folders",
+        "icon": "mdi-share",
+        "position": 90
+      }
+    ],
     "position": 40
   },
   {
     "path": "services",
     "text": "Services",
     "url": "/services",
-    "icon": "mdi-cube-outline",
-    "position": 50,
+    "icon": "mdi-share",
     "children": [
+      {
+        "path": "services.nfs",
+        "text": "NFS",
+        "url": "/services/nfs",
+        "icon": "mdi-nfs",
+        "children": [
+          {
+            "path": "services.nfs.settings",
+            "text": "Settings",
+            "url": "/services/nfs/settings",
+            "icon": "mdi-tune",
+            "position": 10
+          },
+          {
+            "path": "services.nfs.shares",
+            "text": "Shares",
+            "url": "/services/nfs/shares",
+            "icon": "mdi-share",
+            "position": 20
+          }
+        ]
+      },
+      {
+        "path": "services.rsync",
+        "text": "Rsync",
+        "url": "/services/rsync",
+        "icon": "mdi-lan-connect",
+        "children": [
+          {
+            "path": "services.rsync.tasks",
+            "text": "Tasks",
+            "url": "/services/rsync/tasks",
+            "icon": "mdi-calendar-clock",
+            "position": 10
+          },
+          {
+            "path": "services.rsync.server",
+            "text": "Server",
+            "url": "/services/rsync/server",
+            "icon": "mdi-lan-connect",
+            "children": [
+              {
+                "path": "services.rsync.server.settings",
+                "text": "Settings",
+                "url": "/services/rsync/server/settings",
+                "icon": "mdi-tune",
+                "position": 10
+              },
+              {
+                "path": "services.rsync.server.modules",
+                "text": "Modules",
+                "url": "/services/rsync/server/modules",
+                "icon": "mdi-share",
+                "position": 20
+              }
+            ],
+            "position": 20
+          }
+        ]
+      },
+      {
+        "path": "services.smb",
+        "text": "SMB/CIFS",
+        "url": "/services/smb",
+        "icon": "mdi-smb",
+        "children": [
+          {
+            "path": "services.smb.settings",
+            "text": "Settings",
+            "url": "/services/smb/settings",
+            "icon": "mdi-tune",
+            "position": 10
+          },
+          {
+            "path": "services.smb.shares",
+            "text": "Shares",
+            "url": "/services/smb/shares",
+            "icon": "mdi-share",
+            "position": 20
+          }
+        ]
+      },
       {
         "path": "services.ssh",
         "text": "SSH",
         "url": "/services/ssh",
         "icon": "mdi-ssh"
       }
-    ]
+    ],
+    "position": 50
   },
   {
-    "path": "users",
+    "path": "usermgmt",
     "text": "Users",
-    "url": "/users",
-    "icon": "mdi-account-group-outline",
+    "url": "/usermgmt",
+    "icon": "mdi-users",
+    "children": [
+      {
+        "path": "usermgmt.settings",
+        "text": "Settings",
+        "url": "/usermgmt/settings",
+        "icon": "mdi-tune",
+        "position": 10
+      },
+      {
+        "path": "usermgmt.users",
+        "text": "Users",
+        "url": "/usermgmt/users",
+        "icon": "mdi-user",
+        "position": 20
+      },
+      {
+        "path": "usermgmt.groups",
+        "text": "Groups",
+        "url": "/usermgmt/groups",
+        "icon": "mdi-group",
+        "position": 30
+      }
+    ],
     "position": 60
   },
   {
     "path": "diagnostics",
     "text": "Diagnostics",
     "url": "/diagnostics",
-    "icon": "mdi-stethoscope",
+    "icon": "mdi-heartPulse",
+    "children": [
+      {
+        "path": "diagnostics.system-information",
+        "text": "System Information",
+        "url": "/diagnostics/system-information",
+        "icon": "mdi-information",
+        "position": 10
+      },
+      {
+        "path": "diagnostics.system-logs",
+        "text": "System Logs",
+        "url": "/diagnostics/system-logs",
+        "icon": "mdi-file-document-edit",
+        "children": [
+          {
+            "path": "diagnostics.system-logs.logs",
+            "text": "Logs",
+            "url": "/diagnostics/system-logs/logs",
+            "icon": "mdi-file-document-edit",
+            "position": 10
+          },
+          {
+            "path": "diagnostics.system-logs.remote",
+            "text": "Remote",
+            "url": "/diagnostics/system-logs/remote",
+            "icon": "mdi-tune",
+            "position": 20
+          }
+        ],
+        "position": 20
+      },
+      {
+        "path": "diagnostics.processes",
+        "text": "Processes",
+        "url": "/diagnostics/processes",
+        "icon": "mdi-cogs",
+        "position": 30
+      },
+      {
+        "path": "diagnostics.services",
+        "text": "Services",
+        "url": "/diagnostics/services",
+        "icon": "mdi-share",
+        "children": [
+          {
+            "path": "diagnostics.services.nfs",
+            "text": "NFS",
+            "url": "/diagnostics/services/nfs",
+            "icon": "mdi-nfs"
+          },
+          {
+            "path": "diagnostics.services.smb",
+            "text": "SMB/CIFS",
+            "url": "/diagnostics/services/smb",
+            "icon": "mdi-smb"
+          },
+          {
+            "path": "diagnostics.services.ssh",
+            "text": "SSH",
+            "url": "/diagnostics/services/ssh",
+            "icon": "mdi-ssh"
+          }
+        ],
+        "position": 40
+      },
+      {
+        "path": "diagnostics.report",
+        "text": "Report",
+        "url": "/diagnostics/report",
+        "icon": "mdi-text",
+        "position": 60
+      },
+      {
+        "path": "diagnostics.performance-statistics",
+        "text": "Performance Statistics",
+        "url": "/diagnostics/performance-statistics",
+        "icon": "mdi-chart-line",
+        "children": [
+          {
+            "path": "diagnostics.performance-statistics.cpu",
+            "text": "CPU",
+            "url": "/diagnostics/performance-statistics/cpu",
+            "icon": "mdi-cpu-64-bit"
+          },
+          {
+            "path": "diagnostics.performance-statistics.df",
+            "text": "File System Usage",
+            "url": "/diagnostics/performance-statistics/df",
+            "icon": "mdi-harddisk"
+          },
+          {
+            "path": "diagnostics.performance-statistics.load",
+            "text": "Load Average",
+            "url": "/diagnostics/performance-statistics/load",
+            "icon": "mdi-speedometer"
+          },
+          {
+            "path": "diagnostics.performance-statistics.memory",
+            "text": "Memory Usage",
+            "url": "/diagnostics/performance-statistics/memory",
+            "icon": "mdi-memory"
+          },
+          {
+            "path": "diagnostics.performance-statistics.network-interfaces",
+            "text": "Network Interfaces",
+            "url": "/diagnostics/performance-statistics/network-interfaces",
+            "icon": "mdi-network"
+          },
+          {
+            "path": "diagnostics.performance-statistics.uptime",
+            "text": "Uptime",
+            "url": "/diagnostics/performance-statistics/uptime",
+            "icon": "mdi-timer-outline"
+          }
+        ]
+      }
+    ],
     "position": 70
   }
 ]
