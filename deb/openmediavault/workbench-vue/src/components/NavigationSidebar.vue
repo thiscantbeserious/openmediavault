@@ -12,24 +12,36 @@
   >
     <template #prepend>
       <header class="navigation-sidebar__header">
-        <slot name="header">Workbench</slot>
+        <v-text-field
+          v-model="searchQuery"
+          class="navigation-sidebar__search"
+          prepend-inner-icon="mdi-magnify"
+          placeholder="Search"
+          variant="solo"
+          density="compact"
+          hide-details
+          clearable
+          @click:clear="onClearSearch"
+        />
       </header>
     </template>
     <v-list nav density="comfortable" class="navigation-sidebar__content">
       <v-list-item
-        v-for="entry in displayEntries"
+        v-for="entry in filteredEntries"
         :key="entry.url"
         :to="entry.url"
         link
         :title="entry.text"
         :prepend-icon="entry.icon || 'mdi-menu'"
+        active-class="navigation-sidebar__item--active"
+        rounded="0"
       />
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 import { useNavigationStore } from '../stores/navigationStore';
 
@@ -37,6 +49,7 @@ const props = defineProps<{ modelValue: boolean }>();
 const emit = defineEmits<{ (e: 'update:modelValue', value: boolean): void }>();
 
 const navigationStore = useNavigationStore();
+const searchQuery = ref('');
 
 const entries = navigationStore.entries;
 const status = navigationStore.status;
@@ -51,11 +64,21 @@ const fallbackEntries = [
   { path: 'diagnostics', text: 'Diagnostics', url: '/diagnostics', icon: 'mdi-stethoscope' }
 ];
 
-const displayEntries = computed(() => (entries.value?.length ? entries.value : fallbackEntries));
+const displayEntries = computed(() => (entries && entries.length ? entries : fallbackEntries));
+const filteredEntries = computed(() => {
+  const q = (searchQuery.value ?? '').toString().trim().toLowerCase();
+  if (!q) return displayEntries.value;
+  return displayEntries.value.filter((e) => e.text.toLowerCase().includes(q));
+});
+
+const onClearSearch = () => {
+  searchQuery.value = '';
+};
 
 onMounted(() => {
-  if (status.value === 'idle') {
+  if (status === 'idle') {
     navigationStore.fetch().catch((error) => {
+      // eslint-disable-next-line no-console
       console.error('Failed to load navigation entries', error);
     });
   }
@@ -68,7 +91,7 @@ onMounted(() => {
   background-color: var(--omv-colors-surface-primary, #0c1c2c);
   color: var(--omv-colors-textOnPrimary, #ffffff);
   min-height: 100vh;
-  padding: var(--omv-layout-margin, 1.5rem) var(--omv-layout-padding, 1rem);
+  padding: var(--omv-layout-margin, 1.5rem) 0;
   display: flex;
   flex-direction: column;
   gap: var(--omv-layout-margin, 1.5rem);
@@ -76,15 +99,13 @@ onMounted(() => {
 }
 
 .navigation-sidebar__header {
-  font-size: var(--omv-typography-fontSizeSubheading2, 16px);
-  font-weight: var(--omv-typography-fontWeightSubheading2, 500);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  padding: 0 var(--omv-layout-padding, 1rem);
 }
 
 .navigation-sidebar__content {
   flex: 1;
   overflow-y: auto;
+  padding: 0; /* default theme: no inset padding so items align to drawer edge */
 }
 
 .navigation-sidebar__item {
@@ -100,10 +121,55 @@ onMounted(() => {
   font-size: var(--omv-typography-fontSizeBase, 14px);
 }
 
+/* Hover state: subtle bg, no rounded corners so it fills the row */
 .navigation-sidebar__item a:hover {
   opacity: 1;
-  background-color: var(--omv-colors-surface-hover, rgba(0, 0, 0, 0.04));
-  padding: 0.5rem;
-  border-radius: var(--omv-layout-borderRadius, 4px);
+  background-color: rgba(var(--v-theme-on-surface), 0.04);
+}
+
+/* Navigation item typography (themeable) */
+.navigation-sidebar__content :deep(.v-list-item-title) {
+  font-size: var(--omv-typography-fontSizeNavItem, 15px);
+  line-height: 1.3;
+  font-weight: var(--omv-typography-fontWeightNavItem, 500);
+}
+
+/* Active nav item: thin left indicator and subtle background */
+.navigation-sidebar__item--active {
+  box-shadow: inset 3px 0 0 0 rgb(var(--v-theme-primary));
+  background-color: rgba(var(--v-theme-primary), 0.08);
+}
+
+/* Hover feedback for list items (full width, no rounding) */
+.v-list-item:hover {
+  background-color: rgba(var(--v-theme-on-surface), 0.04);
+  box-shadow: inset 3px 0 0 0 rgba(var(--v-theme-primary), 0.4);
+}
+
+/* Accessible focus ring without layout shift */
+.v-list-item:focus-visible {
+  outline: 2px solid rgb(var(--v-theme-primary));
+  outline-offset: -2px;
+}
+
+/* Search field tuning to blend with dark drawer */
+.navigation-sidebar__search :deep(.v-field) {
+  background-color: rgba(var(--v-theme-surface), 0.1);
+  color: rgb(var(--v-theme-on-surface));
+}
+.navigation-sidebar__search :deep(.v-field__outline) {
+  display: none;
+}
+.navigation-sidebar__search :deep(input::placeholder) {
+  color: rgba(var(--v-theme-on-surface), 0.7);
+}
+
+/* List item spacing & icon alignment */
+.navigation-sidebar__content :deep(.v-list-item) {
+  padding-inline-start: var(--omv-layout-padding, 1rem);
+}
+.navigation-sidebar__content :deep(.v-list-item .v-list-item__prepend) {
+  width: 36px; /* reduce default ~56px prepend area */
+  margin-inline-end: 8px; /* tighter gap between icon and label */
 }
 </style>
