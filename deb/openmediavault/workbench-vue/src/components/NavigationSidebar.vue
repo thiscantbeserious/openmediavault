@@ -25,23 +25,55 @@
         />
       </header>
     </template>
-    <v-list nav density="comfortable" class="navigation-sidebar__content">
-      <v-list-item
-        v-for="entry in filteredEntries"
-        :key="entry.url"
-        :to="entry.url"
-        link
-        :title="entry.text"
-        :prepend-icon="entry.icon || 'mdi-menu'"
-        active-class="navigation-sidebar__item--active"
-        rounded="0"
-      />
+    <v-list
+      nav
+      density="comfortable"
+      class="navigation-sidebar__content"
+      v-model:opened="openedGroups"
+      open-on-click
+    >
+      <template v-for="entry in filteredEntries" :key="entry.path">
+        <v-list-group v-if="hasChildren(entry)" :value="entry.path">
+          <template #activator="{ props, isOpen }">
+            <v-list-item
+              v-bind="props"
+              :title="entry.text"
+              :prepend-icon="entry.icon || 'mdi-menu'"
+              :append-icon="isOpen ? 'mdi-chevron-down' : 'mdi-chevron-right'"
+              active-class="navigation-sidebar__item--active"
+              :class="{ 'navigation-sidebar__item--active': isParentActive(entry) }"
+              rounded="0"
+            />
+          </template>
+          <v-list-item
+            v-for="child in entry.children"
+            :key="child.url"
+            :to="child.url"
+            link
+            :title="child.text"
+            :prepend-icon="child.icon"
+            active-class="navigation-sidebar__item--active"
+            rounded="0"
+          />
+        </v-list-group>
+        <v-list-item
+          v-else
+          :to="entry.url"
+          link
+          :title="entry.text"
+          :prepend-icon="entry.icon || 'mdi-menu'"
+          active-class="navigation-sidebar__item--active"
+          rounded="0"
+        />
+      </template>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import type { NavigationMenuItem } from '../composables/useNavigationConfigs';
 
 import { useNavigationStore } from '../stores/navigationStore';
 
@@ -49,17 +81,26 @@ const props = defineProps<{ modelValue: boolean }>();
 const emit = defineEmits<{ (e: 'update:modelValue', value: boolean): void }>();
 
 const navigationStore = useNavigationStore();
+const route = useRoute();
 const searchQuery = ref('');
 
 const entries = navigationStore.entries;
 const status = navigationStore.status;
 
-const fallbackEntries = [
+const fallbackEntries: NavigationMenuItem[] = [
   { path: 'dashboard', text: 'Dashboard', url: '/', icon: 'mdi-view-dashboard' },
   { path: 'system', text: 'System', url: '/system', icon: 'mdi-cog-outline' },
   { path: 'network', text: 'Network', url: '/network', icon: 'mdi-lan' },
   { path: 'storage', text: 'Storage', url: '/storage', icon: 'mdi-harddisk' },
-  { path: 'services', text: 'Services', url: '/services', icon: 'mdi-cube-outline' },
+  {
+    path: 'services',
+    text: 'Services',
+    url: '/services',
+    icon: 'mdi-cube-outline',
+    children: [
+      { path: 'services.ssh', text: 'SSH', url: '/services/ssh', icon: 'mdi-ssh' }
+    ]
+  },
   { path: 'users', text: 'Users', url: '/users', icon: 'mdi-account-group-outline' },
   { path: 'diagnostics', text: 'Diagnostics', url: '/diagnostics', icon: 'mdi-stethoscope' }
 ];
@@ -75,6 +116,10 @@ const onClearSearch = () => {
   searchQuery.value = '';
 };
 
+const hasChildren = (entry: NavigationMenuItem): entry is NavigationMenuItem & { children: NavigationMenuItem[] } => {
+  return Array.isArray(entry.children) && entry.children.length > 0;
+};
+
 onMounted(() => {
   if (status === 'idle') {
     navigationStore.fetch().catch((error) => {
@@ -82,7 +127,44 @@ onMounted(() => {
       console.error('Failed to load navigation entries', error);
     });
   }
+  syncOpenGroups();
 });
+
+watch(
+  () => route.path,
+  () => {
+    syncOpenGroups();
+  }
+);
+
+const openGroups = ref<Record<string, boolean>>({});
+const openedGroups = computed({
+  get: () => Object.keys(openGroups.value).filter((k) => openGroups.value[k]),
+  set: (vals: string[]) => {
+    const next: Record<string, boolean> = {};
+    for (const v of vals) next[v] = true;
+    openGroups.value = next;
+  }
+});
+const isParentActive = (entry: NavigationMenuItem): boolean => {
+  const current = route.path;
+  if (entry.url && current === entry.url) return true;
+  if (Array.isArray(entry.children)) {
+    return entry.children.some((c) => current === c.url || current.startsWith(`${c.url}/`));
+  }
+  return false;
+};
+
+const syncOpenGroups = () => {
+  const list = displayEntries.value;
+  const state: Record<string, boolean> = {};
+  for (const e of list) {
+    if (Array.isArray((e as any).children) && (e as any).children.length) {
+      state[e.path] = isParentActive(e as NavigationMenuItem);
+    }
+  }
+  openGroups.value = state;
+};
 </script>
 
 <style scoped>
@@ -171,5 +253,10 @@ onMounted(() => {
 .navigation-sidebar__content :deep(.v-list-item .v-list-item__prepend) {
   width: 36px; /* reduce default ~56px prepend area */
   margin-inline-end: 8px; /* tighter gap between icon and label */
+}
+
+/* Indentation for child items */
+.navigation-sidebar__content :deep(.v-list-group__items .v-list-item) {
+  padding-inline-start: calc(var(--omv-layout-padding, 1rem) + 16px);
 }
 </style>
