@@ -93,16 +93,35 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 8px;
-  background: rgba(var(--v-theme-on-surface), 0.08);
+  padding: 0;
+  background: transparent;
   color: rgb(var(--v-theme-on-surface));
-  border-radius: 8px;
   font-size: 14px;
   line-height: 1;
   height: 28px;
   margin-left: 1rem; /* spacing from brand block */
   align-self: center;
   z-index: 0;
+}
+
+/* Breadcrumb pills: only the interactive links get a grey pill */
+.topbar__breadcrumbs :deep(.v-breadcrumbs-item) {
+  padding: 0;
+}
+
+.topbar__breadcrumbs :deep(.v-breadcrumbs-item > a) {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  background: rgba(var(--v-theme-on-surface), 0.08);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.topbar__breadcrumbs :deep(.v-breadcrumbs-item--disabled),
+.topbar__breadcrumbs :deep(.v-breadcrumbs-item--disabled > a) {
+  background: transparent !important;
 }
 
 /* Ensure Vuetify toolbar content spans full height with no extra padding */

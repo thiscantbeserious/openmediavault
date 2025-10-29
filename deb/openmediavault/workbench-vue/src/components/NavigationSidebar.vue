@@ -178,8 +178,11 @@ const openGroups = ref<Record<string, boolean>>({});
 const openedGroups = computed({
   get: () => Object.keys(openGroups.value).filter((k) => openGroups.value[k]),
   set: (vals: string[]) => {
+    const q = (searchQuery.value ?? '').toString().trim();
+    const allowMultiple = q.length > 0; // during search, allow multiple groups open
+    const keys = allowMultiple ? vals : vals.length ? [vals[vals.length - 1]] : [];
     const next: Record<string, boolean> = {};
-    for (const v of vals) next[v] = true;
+    for (const v of keys) next[v] = true;
     openGroups.value = next;
   }
 });
@@ -292,16 +295,19 @@ const isActive = (url?: string): boolean => {
 
 /* List item spacing & icon alignment */
 .navigation-sidebar__content :deep(.v-list-item) {
-  padding-inline-start: var(--omv-layout-padding, 1rem);
+  /* Horizontal padding applied to the whole item, including icon area */
+  padding-inline: var(--omv-nav-item-padding, 1rem);
 }
 .navigation-sidebar__content :deep(.v-list-item .v-list-item__prepend) {
   width: 36px; /* reduce default ~56px prepend area */
-  margin-inline-end: 8px; /* tighter gap between icon and label */
+  margin-inline-end: 0.6rem; /* tighter gap between icon and label */
+  margin-inline-start: 0.8rem;
 }
 
 /* Indentation for child items */
 .navigation-sidebar__content :deep(.v-list-group__items .v-list-item) {
-  padding-inline-start: calc(var(--omv-layout-padding, 1rem) + 16px);
+  padding-inline-start: calc(var(--omv-nav-item-padding, 1rem) + 16px);
+  padding-inline-end: var(--omv-nav-item-padding, 1rem);
 }
 
 /* Always show group chevrons and ensure theme-consistent color */
