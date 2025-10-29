@@ -11,15 +11,13 @@
     </nav>
     <v-spacer class="topbar__spacer" />
     <div class="topbar__actions">
-      <v-btn icon aria-label="notifications" variant="text"><v-icon>mdi-bell-outline</v-icon></v-btn>
-      <v-btn icon aria-label="help" variant="text"><v-icon>mdi-help-circle-outline</v-icon></v-btn>
-      <v-btn icon aria-label="user" variant="text"><v-icon>mdi-account-circle-outline</v-icon></v-btn>
-      <v-btn icon aria-label="power" variant="text"><v-icon>mdi-power</v-icon></v-btn>
+      <TopMenus />
     </div>
   </v-app-bar>
  </template>
 
 <script setup lang="ts">
+import TopMenus from './TopMenus.vue';
 </script>
 
 <style scoped>
